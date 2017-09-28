@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
-  productGUID: 42dbd3fa560ac2d4fbdfbbafb3009532
+  productGUID: b41fa38b463074443b47505369a24932
   AndroidProfiler: 0
   defaultScreenOrientation: 4
   targetDevice: 2
@@ -589,9 +589,9 @@ PlayerSettings:
   cloudServicesEnabled: {}
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: b2ce59ec-f033-45c9-a3ae-5db61e1d3262
-  projectName: TrustFall
-  organizationId: juniorwitteveen
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
