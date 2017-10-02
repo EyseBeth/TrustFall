@@ -1,28 +1,51 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
+    private Vector3 respawnPoint;
 
-    public float speed = 10.0F;
-
-    // Use this for initialization
-    void Start()
+    private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (isLocalPlayer)
+        {
+            respawnPoint = transform.position;
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float translation = Input.GetAxis("Vertical") * speed;
-        float straffe = Input.GetAxis("Horizontal") * speed;
-        translation *= Time.deltaTime;
-        straffe *= Time.deltaTime;
+        if (!isLocalPlayer)
+        {
+            return;
+        }
 
-        transform.Translate(straffe, 0, translation);
+        var x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
+        var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 
-        if (Input.GetKeyDown("escape"))
-            Cursor.lockState = CursorLockMode.None;
+        transform.Rotate(0, x, 0);
+        transform.Translate(0, 0, z);
+        if (Input.GetKeyDown(KeyCode.R)) CmdRespawn();
+    }
+
+    [Command]
+    void CmdRespawn()
+    {
+        RpcRespawn();
+    }
+    [ClientRpc]
+    void RpcRespawn()
+    {
+        if (isLocalPlayer)
+        {
+            transform.position = respawnPoint;
+        }
+    }
+
+    public override void OnStartLocalPlayer()
+    {
+        GetComponent<MeshRenderer>().material.color = Color.blue;
     }
 }
