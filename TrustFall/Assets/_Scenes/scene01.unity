@@ -1962,6 +1962,11 @@ Prefab:
       propertyPath: bridge
       value: 
       objectReference: {fileID: 1885452547}
+    - target: {fileID: 114670128487464886, guid: 7e93d9a34b8a18942aa51701127ef603,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e93d9a34b8a18942aa51701127ef603, type: 2}
   m_IsPrefabParent: 0
