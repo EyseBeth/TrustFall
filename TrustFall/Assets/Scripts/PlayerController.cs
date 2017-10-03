@@ -48,4 +48,20 @@ public class PlayerController : NetworkBehaviour
     {
         GetComponent<MeshRenderer>().material.color = Color.blue;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("PressurePlate"))
+        {
+            collision.collider.GetComponent<PressurePlateActivated>().activated = true;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("PressurePlate"))
+        {
+            collision.collider.GetComponent<PressurePlateActivated>().activated = false;
+        }
+    }
+
 }
