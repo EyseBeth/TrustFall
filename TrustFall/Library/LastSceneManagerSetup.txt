@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/_Scenes/RuneScene.unity
+=======
+- path: Assets/_Scenes/Networking.unity
+>>>>>>> master
   isLoaded: 1
   isActive: 1
