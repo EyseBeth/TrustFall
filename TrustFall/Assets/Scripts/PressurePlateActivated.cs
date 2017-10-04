@@ -7,6 +7,8 @@ public class PressurePlateActivated : MonoBehaviour
     public GameObject bridge;
     public Vector3 OGPos;
     public float heightDifference;
+    public float moveSpeed;
+    public bool activated = false;
 
     void Start()
     {
@@ -15,17 +17,18 @@ public class PressurePlateActivated : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey("t"))
+        if (activated)
         {
             //bridge.GetComponent<BridgeMoving>().activated = true;
-            if (bridge.transform.position.y < OGPos.y + heightDifference) bridge.transform.Translate(0, 0.1f, 0);
+            if (bridge.transform.position.y < OGPos.y + heightDifference) bridge.transform.Translate(0, moveSpeed, 0);
         }
         else
         {
             //bridge.GetComponent<BridgeMoving>().activated = false;
-            if (bridge.transform.position.y > OGPos.y) bridge.transform.Translate(0, -0.1f, 0);
+            if (bridge.transform.position.y > OGPos.y) bridge.transform.Translate(0, -moveSpeed, 0);
         }
     }
+    
     /*void Update()
     {
         if (activated)
